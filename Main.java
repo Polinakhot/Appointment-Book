@@ -9,5 +9,6 @@ public class Main
         for(int i = 10; i < 15; i++) schedule[1][i] = true;
         
         a.printPeriod(2);
+        System.out.print(a.findFreeBlock(2, 15));
     }
 }
