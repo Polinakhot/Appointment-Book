@@ -13,8 +13,13 @@ public class AppointmentBook {
     }
 
  
-    private void reserveBlock(int period, int startMinute, int duration) {
-        /* implementation not shown */ }
+    private void reserveBlock(int period, int startMinute, int duration) 
+    {
+        for(int i = startMinute; i < startMinute + duration; i++)
+        {
+            schedule[period - 1][i] = false;
+        }
+    }
 
     
     public int findFreeBlock(int period, int duration) 
@@ -38,6 +43,16 @@ public class AppointmentBook {
     
     public boolean makeAppointment(int startPeriod, int endPeriod, int duration)
     {
+        for(int i = startPeriod; i <= endPeriod; i++)
+        {
+            int freeBlock = findFreeBlock(i, duration);
+            if (freeBlock > -1)
+            {
+                reserveBlock(endPeriod, i, duration);
+                return true;
+            }
+            return false;
+        }
         return false;
     }
 
